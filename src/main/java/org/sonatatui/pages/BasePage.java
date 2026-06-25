@@ -39,7 +39,6 @@ public class BasePage {
         int endX = startX;
         int endY = (int) (size.getHeight() * 0.10);
 
-        //To do swipe actions y coordinate remains x changes
         PointerInput finger1 = new PointerInput(PointerInput.Kind.TOUCH, "finger1");
 
         Sequence sequence1 = new Sequence(finger1,1)
