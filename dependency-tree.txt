@@ -1,0 +1,86 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.sonatatui.automation:SonataTUIMobileApp:jar:1.0-SNAPSHOT
+[WARNING] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.testng:testng:jar -> duplicate declaration of version 7.12.0 @ line 49, column 21
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] ------------< org.sonatatui.automation:SonataTUIMobileApp >-------------
+[INFO] Building SonataTUIMobileApp 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- dependency:3.6.0:tree (default-cli) @ SonataTUIMobileApp ---
+[INFO] org.sonatatui.automation:SonataTUIMobileApp:jar:1.0-SNAPSHOT
+[INFO] +- io.appium:java-client:jar:10.1.0:compile
+[INFO] |  +- org.seleniumhq.selenium:selenium-api:jar:4.45.0:compile
+[INFO] |  +- org.seleniumhq.selenium:selenium-remote-driver:jar:4.45.0:compile
+[INFO] |  |  +- com.google.auto.service:auto-service-annotations:jar:1.1.1:compile
+[INFO] |  |  +- com.google.guava:guava:jar:33.6.0-jre:compile
+[INFO] |  |  |  +- com.google.guava:failureaccess:jar:1.0.3:compile
+[INFO] |  |  |  +- com.google.guava:listenablefuture:jar:9999.0-empty-to-avoid-conflict-with-guava:compile
+[INFO] |  |  |  \- com.google.j2objc:j2objc-annotations:jar:3.1:compile
+[INFO] |  |  +- io.opentelemetry:opentelemetry-api:jar:1.63.0:compile
+[INFO] |  |  +- io.opentelemetry:opentelemetry-context:jar:1.63.0:compile
+[INFO] |  |  |  \- io.opentelemetry:opentelemetry-common:jar:1.63.0:compile
+[INFO] |  |  +- io.opentelemetry:opentelemetry-exporter-logging:jar:1.63.0:compile
+[INFO] |  |  +- io.opentelemetry:opentelemetry-sdk-common:jar:1.63.0:compile
+[INFO] |  |  +- io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi:jar:1.63.0:compile
+[INFO] |  |  +- io.opentelemetry:opentelemetry-sdk-extension-autoconfigure:jar:1.63.0:compile
+[INFO] |  |  +- io.opentelemetry:opentelemetry-sdk-trace:jar:1.63.0:compile
+[INFO] |  |  +- io.opentelemetry:opentelemetry-sdk:jar:1.63.0:compile
+[INFO] |  |  |  +- io.opentelemetry:opentelemetry-sdk-metrics:jar:1.63.0:compile
+[INFO] |  |  |  \- io.opentelemetry:opentelemetry-sdk-logs:jar:1.63.0:compile
+[INFO] |  |  +- net.bytebuddy:byte-buddy:jar:1.18.10:compile
+[INFO] |  |  +- org.seleniumhq.selenium:selenium-http:jar:4.45.0:compile
+[INFO] |  |  +- org.seleniumhq.selenium:selenium-json:jar:4.45.0:compile
+[INFO] |  |  +- org.seleniumhq.selenium:selenium-manager:jar:4.45.0:compile
+[INFO] |  |  \- org.seleniumhq.selenium:selenium-os:jar:4.45.0:compile
+[INFO] |  +- org.seleniumhq.selenium:selenium-support:jar:4.45.0:compile
+[INFO] |  +- com.google.code.gson:gson:jar:2.13.2:compile
+[INFO] |  |  \- com.google.errorprone:error_prone_annotations:jar:2.41.0:compile
+[INFO] |  +- org.slf4j:slf4j-api:jar:2.0.17:compile
+[INFO] |  \- org.jspecify:jspecify:jar:1.0.0:compile
+[INFO] +- org.testng:testng:jar:7.12.0:compile
+[INFO] |  +- org.jcommander:jcommander:jar:1.83:compile
+[INFO] |  \- org.webjars:jquery:jar:3.7.1:runtime
+[INFO] +- io.cucumber:cucumber-java:jar:7.34.3:compile
+[INFO] |  \- org.apiguardian:apiguardian-api:jar:1.1.2:compile
+[INFO] +- io.cucumber:cucumber-core:jar:7.34.3:compile
+[INFO] |  +- io.cucumber:cucumber-gherkin:jar:7.34.3:compile
+[INFO] |  +- io.cucumber:cucumber-gherkin-messages:jar:7.34.3:compile
+[INFO] |  |  \- io.cucumber:gherkin:jar:36.1.0:compile
+[INFO] |  +- io.cucumber:messages:jar:30.1.0:compile
+[INFO] |  +- io.cucumber:messages-ndjson:jar:0.3.2:compile
+[INFO] |  +- io.cucumber:pretty-formatter:jar:2.4.1:compile
+[INFO] |  |  \- io.cucumber:query:jar:14.7.0:compile
+[INFO] |  +- io.cucumber:teamcity-formatter:jar:0.2.0:compile
+[INFO] |  +- io.cucumber:testng-xml-formatter:jar:0.7.0:compile
+[INFO] |  +- io.cucumber:usage-formatter:jar:0.1.0:compile
+[INFO] |  +- io.cucumber:tag-expressions:jar:8.1.0:compile
+[INFO] |  +- io.cucumber:cucumber-expressions:jar:18.1.0:compile
+[INFO] |  +- io.cucumber:cucumber-json-formatter:jar:0.3.2:compile
+[INFO] |  +- io.cucumber:datatable:jar:7.34.3:compile
+[INFO] |  +- io.cucumber:cucumber-plugin:jar:7.34.3:compile
+[INFO] |  +- io.cucumber:docstring:jar:7.34.3:compile
+[INFO] |  +- io.cucumber:html-formatter:jar:22.3.0:compile
+[INFO] |  +- io.cucumber:junit-xml-formatter:jar:0.11.0:compile
+[INFO] |  \- io.cucumber:ci-environment:jar:12.0.0:compile
+[INFO] +- io.cucumber:cucumber-testng:jar:7.34.3:compile
+[INFO] +- com.aventstack:extentreports:jar:5.0.9:compile
+[INFO] |  +- io.reactivex.rxjava3:rxjava:jar:3.0.4:compile
+[INFO] |  |  \- org.reactivestreams:reactive-streams:jar:1.0.3:compile
+[INFO] |  +- org.freemarker:freemarker:jar:2.3.30:compile
+[INFO] |  \- org.projectlombok:lombok:jar:1.18.12:compile
+[INFO] \- com.fasterxml.jackson.core:jackson-databind:jar:2.19.2:compile
+[INFO]    +- com.fasterxml.jackson.core:jackson-annotations:jar:2.19.2:compile
+[INFO]    \- com.fasterxml.jackson.core:jackson-core:jar:2.19.2:compile
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  6.526 s
+[INFO] Finished at: 2026-06-25T15:38:10+05:30
+[INFO] ------------------------------------------------------------------------
