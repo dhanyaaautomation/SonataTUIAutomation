@@ -140,7 +140,7 @@ adb devices
 To execute the tests on BrowserStack, update the following properties:
 
 ```properties
-mode=browserstack
+mode=bs
 
 browserstack.user=<username>
 browserstack.key=<access-key>
