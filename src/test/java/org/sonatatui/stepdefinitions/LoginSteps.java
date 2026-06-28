@@ -44,13 +44,13 @@ public class LoginSteps {
 
     @When("User clicks Submit without entering mandatory fields")
     public void user_clicks_submit_without_entering_mandatory_fields() {
-        new LoginPage().clickSubmit();
+        loginPage.clickSubmit();
     }
 
     @Then("User should see mandatory field validation messages")
     public void user_should_see_mandatory_field_validation_messages() {
         int expectedCount = 3;
-        Assert.assertEquals(new LoginPage().getRequiredValidationCount(), expectedCount);
+        Assert.assertEquals(loginPage.getRequiredValidationCount(), expectedCount);
     }
 
     @When("User enters username and password")

@@ -2,20 +2,24 @@ package org.sonatatui.pages;
 
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.sonatatui.drivers.DriverManager;
+import org.sonatatui.utils.Log;
 
 public class HomePage extends BasePage {
 
+    private static final Logger logger = Log.getLogger(HomePage.class);
+
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='All']")
-    private WebElement all_tab;
+    private WebElement allTab;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Hotels']")
-    private WebElement hotels_tab;
+    private WebElement hotelsTab;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Holidays']")
-    private WebElement holidays_tab;
+    private WebElement holidaysTab;
 
     public HomePage() {
 
@@ -24,31 +28,31 @@ public class HomePage extends BasePage {
     }
 
     public void clickAllTab() {
-        click(all_tab);
+        click(allTab);
     }
 
     public void clickHotelsTab() {
-        click(hotels_tab);
+        click(hotelsTab);
     }
 
     public void clickHolidaysTab() {
-        click(holidays_tab);
+        click(holidaysTab);
     }
 
 
     public boolean isAllTabSelected() {
 
-        return all_tab.isDisplayed();
+        return allTab.isDisplayed();
     }
 
     public boolean isHotelsTabSelected() {
 
-        return hotels_tab.isDisplayed();
+        return hotelsTab.isDisplayed();
     }
 
     public boolean isHolidaysTabSelected() {
 
-        return holidays_tab.isDisplayed();
+        return holidaysTab.isDisplayed();
     }
 
     public void scrollTillEnd() {
@@ -60,7 +64,8 @@ public class HomePage extends BasePage {
             String currentPageSource = DriverManager.getDriver().getPageSource();
 
             if (currentPageSource.equals(previousPageSource)) {
-                System.out.println("Reached end of list");
+                //System.out.println("Reached end of list");
+                logger.info("Reached end of list");
                 break;
             }
 

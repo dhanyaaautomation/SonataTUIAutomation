@@ -9,6 +9,7 @@ import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.sonatatui.constants.FrameworkConstants;
 import org.sonatatui.drivers.DriverManager;
 
 import java.time.Duration;
@@ -82,9 +83,9 @@ public class BasePage {
     }
 
     protected void explicitWait(WebElement element) {
-        new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(10))
+        new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(FrameworkConstants.getExplicitWaitDuration()))
                 .withMessage("")
-                .pollingEvery(Duration.ofSeconds(5)).until(ExpectedConditions
+                .pollingEvery(Duration.ofSeconds(FrameworkConstants.getPollingFrequency())).until(ExpectedConditions
                         .visibilityOf(element));
 
     }

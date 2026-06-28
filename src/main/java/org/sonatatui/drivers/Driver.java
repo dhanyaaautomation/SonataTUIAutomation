@@ -16,14 +16,9 @@ public class Driver {
 
         if (Objects.isNull(DriverManager.getDriver())) {
 
-            // Get the mode value from property file
-            String modevalue = PropertyUtils.getValue("mode");
+            String modeValue = PropertyUtils.getValue("mode");
 
-            /*Modes is an Enum which contains the variables like Local and BS
-            Mode value is given in upper case in Enum file.
-            Hence, convert the mode value to upper case.*/
-
-            WebDriver driver = DriverFactory.getMode(Modes.valueOf(modevalue.toUpperCase()));
+            WebDriver driver = DriverFactory.getMode(Modes.valueOf(modeValue.toUpperCase()));
             DriverManager.setDriver(driver);
         }
     }

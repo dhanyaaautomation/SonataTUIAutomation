@@ -3,46 +3,51 @@ package org.sonatatui.pages;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.sonatatui.drivers.DriverManager;
+import org.sonatatui.utils.Log;
+
 import java.util.List;
 
 public class LoginPage extends BasePage {
 
+    private static final Logger logger = Log.getLogger(LoginPage.class);
+
     @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id='username_input_field']")
-    private WebElement username_element;
+    private WebElement usernameElement;
 
     @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id='password_input_field']")
-    private WebElement password_element;
+    private WebElement passwordElement;
 
     @AndroidFindBy(accessibility = "Calendar")
     private WebElement dob;
 
     @AndroidFindBy(accessibility = "Switch to text input mode")
-    private WebElement dob_edit;
+    private WebElement dobEdit;
 
     @AndroidFindBy(xpath = "//android.widget.EditText")
-    private WebElement dob_input;
+    private WebElement dobInput;
 
     @AndroidFindBy(xpath = "//*[@resource-id='date_of_birth_dialog_confirm_button']//android.widget.Button")
-    private WebElement confirm_button;
+    private WebElement confirmButton;
 
     @AndroidFindBy(xpath = "//android.view.View[@resource-id='login_form_submit_button']//android.widget.Button")
-    private WebElement submit_button;
+    private WebElement submitButton;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Log in']")
-    private WebElement login_text;
+    private WebElement loginText;
 
     @AndroidFindBy(accessibility = "Switch to selecting a year")
-    private WebElement switch_year;
+    private WebElement switchYear;
 
     @AndroidFindBy(accessibility = "Change to previous month")
-    private WebElement previous_month;
+    private WebElement previousMonth;
 
     @AndroidFindBy(accessibility = "Change to next month")
-    private WebElement next_month;
+    private WebElement nextMonth;
 
     @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id='date_of_birth_field']")
     private WebElement dobField;
@@ -57,18 +62,18 @@ public class LoginPage extends BasePage {
 
     public LoginPage login(String username, String password) throws InterruptedException {
 
-        sendKeys(username_element, username);
-        sendKeys(password_element, password);
+        sendKeys(usernameElement, username);
+        sendKeys(passwordElement, password);
         return this;
 
     }
 
     public HomePage enterDateOfBirth(String dob) {
         click(this.dob);
-        click(dob_edit);
-        sendKeys(dob_input, dob);
-        click(confirm_button);
-        click(submit_button);
+        click(dobEdit);
+        sendKeys(dobInput, dob);
+        click(confirmButton);
+        click(submitButton);
 
         return new HomePage();
     }
@@ -83,11 +88,11 @@ public class LoginPage extends BasePage {
     }
 
     public boolean isLoginPageDisplayed() {
-        return login_text.isDisplayed();
+        return loginText.isDisplayed();
     }
 
     public void clickSubmit() {
-        click(submit_button);
+        click(submitButton);
     }
 
     public void selectDate(String dob) {
@@ -97,13 +102,15 @@ public class LoginPage extends BasePage {
         String year = dob.substring(4, 8);
 
         click(this.dob);
-        click(switch_year);
+        click(switchYear);
 
         scrollToSpecificElement(getYearLocator(year));
 
         navigateToMonth(month);
 
         String targetDate = getMonthName(month) + " " + day + ", " + year;
+        //System.out.println("Target date: " + targetDate);
+        logger.info("Target date: {}", targetDate);
 
         DriverManager.getDriver()
                 .findElement(
@@ -111,7 +118,7 @@ public class LoginPage extends BasePage {
                                 "//android.widget.TextView[contains(@text,'" +
                                         targetDate + "')]"))
                 .click();
-        click(confirm_button);
+        click(confirmButton);
 
     }
 
@@ -142,7 +149,7 @@ public class LoginPage extends BasePage {
                 return;
             }
 
-            click(previous_month);
+            click(previousMonth);
         }
 
         throw new RuntimeException(
