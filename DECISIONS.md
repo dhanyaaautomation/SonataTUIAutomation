@@ -4,15 +4,25 @@
 
 ## 1. Why I Chose This Project Structure
 
-The framework follows a layered design using Page Object Model (POM) and uses a Driver Factory pattern to allow execution on local devices, emulators, and BrowserStack cloud devices.
+I followed the **Page Object Model (POM)** with a modular architecture to make the framework maintainable, reusable, and scalable. Each package has a single responsibility, making the framework easier to understand and extend.
 
-Reasons for this structure:
+## Package Structure
 
-* Improves maintainability and readability
-* Keeps locators separate from test logic
-* Encourages code reuse
-* Simplifies onboarding for new contributors
-* Supports future scalability for additional screens and platforms
+* **pages** – Contains Page Object classes with UI locators and page-specific actions.
+* **drivers** – Implements the Driver Factory pattern to support both Local and BrowserStack execution.
+* **stepdefinitions** – Contains Cucumber step definition classes.
+* **hooks** – Handles test setup and teardown using Cucumber hooks.
+* **utils** – Provides reusable utility classes such as PropertyUtils, JsonUtils, WaitUtils, ScreenshotUtils, and Log.
+* **constants / enums** – Stores application constants and enumerations.
+* **resources** – Contains feature files, configuration files, test data, and Log4j configuration.
+
+## Why this structure?
+
+* Promotes code reusability.
+* Separates framework and business logic.
+* Makes maintenance easier.
+* Supports execution on multiple environments.
+* Allows new pages and features to be added with minimal changes.
 
 The framework follows industry-standard design patterns and best practices:
 
@@ -27,12 +37,38 @@ The framework follows industry-standard design patterns and best practices:
 
 ## 2. AI Usage and Corrections
 
-AI tools were used as an assistant during framework development for:
+### AI Suggestion On Project Structure
 
-* Initial project structure suggestions
-* Cucumber feature file drafting
-* README documentation generation
-* Maven dependency validation
+* Suggested a generic Selenium Page Object Model structure.
+
+### Correction Made
+
+* Modified the structure specifically for an Appium mobile automation framework.
+* Introduced DriverFactory, DriverManager, LocalDriver, and BrowserStackDriver.
+* Added utility classes for logging, configuration, JSON handling, waits, and screenshots.
+* Organized Cucumber feature files, hooks, and step definitions separately.
+
+### AI Suggestion On Feature Files
+
+* Generated initial Gherkin scenarios.
+
+### Correction Made
+
+* Removed duplicate scenarios.
+* Updated steps to match the actual application flow.
+* Improved scenario readability using proper Given/When/Then format.
+* Selected scenarios based on business-critical functionality rather than UI coverage alone.
+
+### AI Suggestion On Documentation
+
+* Generated the initial README and DECISIONS document.
+
+### Correction Made
+
+* Updated the documentation to accurately describe the framework architecture.
+* Added execution instructions.
+* Improved explanations of design decisions.
+* Included AI usage and corrections as required.
 
 ---
 
@@ -40,28 +76,59 @@ AI tools were used as an assistant during framework development for:
 
 The following enhancements would improve the framework further:
 
-* Extent Reports integration
-* Jenkins Integration
-* Failure screenshots embedded into reports
-* Parallel execution support across multiple devices
+* Parallel execution across multiple devices
 * Cross-platform execution support for Android and iOS using configurable capabilities
+* Retry mechanism for flaky tests
+* Automatic screenshot capture for failed steps
+* Extent Reports integration with Cucumber
+* Jenkins or GitHub Actions pipeline
+* Failure screenshots embedded into reports
 
 ---
 
-## 4. CI Execution with Parallel Android and iOS Runs
+## 4. How I would run this in CI with parallel execution across iOS and Android
 
-For CI execution, I would use Jenkins integrated with BrowserStack.
-To support parallel execution across Android and iOS, I would use BrowserStack cloud devices with separate device configurations for each platform.
+The current implementation supports **Android automation only**. iOS support has **not** been implemented as part of this assessment. However, the framework uses the **Driver Factory pattern**, making it easy to extend to additional platforms without changing the Page Objects, Step Definitions, or Hooks.
 
-The framework uses a Driver Factory and thread-safe driver management, allowing multiple Appium sessions to run independently.
+### Current Implementation
 
-Execution approach:
+* Supports Local Android execution using `LocalDriver`.
+* Supports Android cloud execution using `BrowserStackDriver`.
+* Uses Driver Factory for driver creation.
+* Stores execution settings in `config.properties`.
 
-* Configure BrowserStack capabilities for Android and iOS devices.
-* Create separate platform configurations for Android and iOS.
-* Start independent Appium sessions for each platform.
-* Execute the same Cucumber feature files against both platforms simultaneously.
-* Generate separate execution reports for each platform.
+### How I would add iOS support
+
+To support iOS, I would:
+
+* Create an `IOSLocalDriver` using Appium's `XCUITestOptions`.
+* Create an `IOSBrowserStackDriver` for BrowserStack execution.
+* Extend the Driver Factory to return Android or iOS drivers based on the configured platform.
+* Add iOS capabilities such as device name, platform version, automation name, and app details to the configuration.
+
+### CI/CD Pipeline
+
+I would configure a GitHub Actions or Jenkins pipeline to:
+
+* Checkout the source code.
+* Install Java and Maven dependencies.
+* Configure BrowserStack credentials.
+* Execute Android and iOS tests.
+* Generate Cucumber and Extent reports.
+* Archive test reports as build artifacts.
+
+### Parallel Execution
+
+Once iOS support is implemented, Android and iOS tests can run in parallel by:
+
+* Running separate Android and iOS jobs.
+* Passing platform-specific capabilities through configuration.
+* Using the existing ThreadLocal DriverManager for independent driver instances.
+* Executing tests simultaneously on BrowserStack.
+
+### Current Limitation
+
+This framework currently automates **Android only**. The CI/CD and parallel execution approach described above outlines how the framework would be extended to support both Android and iOS in the future.
 
 
 ## 5. Why These 5 Scenarios Were Selected
