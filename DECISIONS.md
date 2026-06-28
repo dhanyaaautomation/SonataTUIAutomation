@@ -133,25 +133,25 @@ This framework currently automates **Android only**. The CI/CD and parallel exec
 
 ## 5. Why These 5 Scenarios Were Selected
 
-1. Verify Successful Login
+### 1. Verify Successful Login
 Reason:
 Login is the primary entry point to the application. If users cannot authenticate successfully, most application functionality becomes inaccessible.
 
-2. Verify User Can Select Date of Birth Using Date Picker
+### 2. Verify User Can Select Date of Birth Using Date Picker
 Reason:
 The date picker is a key input control used during user registration/profile setup. Mobile applications often encounter issues with date picker interactions across devices and OS versions.
 
-3. Verify Validation When Mandatory Fields Are Empty
+### 3. Verify Validation When Mandatory Fields Are Empty
 
 Reason:
 Validating mandatory fields ensures the application prevents invalid or incomplete data submission and provides appropriate feedback to users.
 
-4. Verify User Can Scroll Through Search Results
+### 4. Verify User Can Scroll Through Search Results
 
 Reason:
 Search results represent dynamic content that users interact with frequently. Scrolling validates content loading, rendering, and application stability under user interaction.
 
-5. Verify Home Screen Tabs Are Displayed and Accessible
+### 5. Verify Home Screen Tabs Are Displayed and Accessible
 
 Reason:
 The Home screen acts as the primary navigation hub. Users rely on tabs to access different sections of the application.
